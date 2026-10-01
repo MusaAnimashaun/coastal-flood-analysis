@@ -12,6 +12,8 @@ venv/
 # Project data
 data/raw/*
 data/processed/*
+# Generated inundation rasters
+outputs/inundation/*.tif
 
 # Keep empty data directories in Git
 !data/raw/.gitkeep
