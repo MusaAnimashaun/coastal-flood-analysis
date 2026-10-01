@@ -2,16 +2,15 @@ from pathlib import Path
 
 import geopandas as gpd
 import matplotlib.pyplot as plt
-from shapely.geometry import box
+from shapely.geometry import Polygon
 
 
 # --------------------------------------------------
-# Project directories
+# Project paths
 # --------------------------------------------------
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 FIGURES_DIR = PROJECT_DIR / "figures"
-
 FIGURES_DIR.mkdir(exist_ok=True)
 
 
@@ -19,38 +18,36 @@ FIGURES_DIR.mkdir(exist_ok=True)
 # Study-area coordinates
 # --------------------------------------------------
 
-WEST = -82.600
-SOUTH = 27.930
-EAST = -82.540
-NORTH = 27.990
+coordinates = [
+    (-82.6904, 28.0278),
+    (-82.6731, 28.0020),
+    (-82.6924, 27.9514),
+    (-82.7298, 27.98267),
+]
 
 
 # --------------------------------------------------
 # Create study-area polygon
 # --------------------------------------------------
 
-study_area = box(
-    WEST,
-    SOUTH,
-    EAST,
-    NORTH,
-)
+study_area = Polygon(coordinates)
 
 aoi = gpd.GeoDataFrame(
-    {"name": ["Tampa Bay AOI"]},
+    {"name": ["Tampa Bay AOI - Version 2"]},
     geometry=[study_area],
     crs="EPSG:4326",
 )
 
 
 # --------------------------------------------------
-# Basic information
+# Display information
 # --------------------------------------------------
 
 print(aoi)
-print()
-print("CRS:", aoi.crs)
+
+print("\nCRS:", aoi.crs)
 print("Bounds:", aoi.total_bounds)
+print("Polygon valid:", study_area.is_valid)
 
 
 # --------------------------------------------------
@@ -64,7 +61,12 @@ aoi.boundary.plot(
     linewidth=2,
 )
 
-ax.set_title("Tampa Bay Study Area - AOI Version 1")
+ax.scatter(
+    [point[0] for point in coordinates],
+    [point[1] for point in coordinates],
+)
+
+ax.set_title("Tampa Bay Study Area - AOI Version 2")
 ax.set_xlabel("Longitude")
 ax.set_ylabel("Latitude")
 ax.grid(alpha=0.3)
