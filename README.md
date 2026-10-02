@@ -13,7 +13,7 @@ The project also includes a multidimensional NetCDF output and a small machine l
 ### 1. Clone this repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/MusaAnimashaun/coastal-flood-analysis.git
 cd coastal-flood-analysis
 ```
 
@@ -61,6 +61,16 @@ python src/13_terrain_classification.py
 
 Intermediate rasters are saved in `data/processed`, figures are saved in `figures`, and analysis results are saved in `outputs`.
 
+# Environment
+
+The project was developed and tested in Ubuntu 24.04 LTS using WSL2, with Python 3.12 and Git for version control.
+
+The Python and operating system environment can be checked using:
+
+```bash
+python check_environment.py
+```
+
 # Results
 
 The USGS and NOAA elevation datasets were aligned to a common 1-m grid. Both datasets are referenced to NAVD88, and the NOAA elevations were converted from US survey feet to meters before alignment.
@@ -107,5 +117,5 @@ The experiment is exploratory. Because elevation was also used when defining the
 
 # Contact
 
-Musa Animashaun
+Musa Animashaun  
 Email: musaanimashaun@gmail.com
