@@ -1,0 +1,8 @@
+metric,value
+accuracy,0.99068
+unchanged_precision,1.0
+unchanged_recall,0.98136
+unchanged_f1,0.9905923204263738
+replacement_precision,0.9817010916516139
+replacement_recall,1.0
+replacement_f1,0.9907660603178378
